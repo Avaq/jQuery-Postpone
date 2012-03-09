@@ -46,17 +46,17 @@ $.every(250).progress(function(){
 
 ### clear()
 
-This method clears timeouts before they complete, or intervals while they are still running.
+This method clears the timeout and rejects the deferred.
 
 ```javascript
 var timeout = $.after('1s');
 timeout.clear();
-//Nothing happens after one second.
+//The timeout has been prevented from ever calling any done() callbacks and any fail() callbacks are called.
 ```
 
 ### complete()
 
-This method flags an interval as "complete". Stopping it from repeating and resolving the deferred.
+This method clears the timeout and resolves the deferred.
 
 ```javascript
 var interval = $.every(250);
