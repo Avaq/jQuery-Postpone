@@ -58,7 +58,7 @@ timeout.clear();
 
 This method flags an interval as "complete". Stopping it from repeating and resolving the deferred.
 
-```
+```javascript
 var interval = $.every(250);
 interval.complete();
 //The interval has stopped and any .done() callbacks will be fired.
