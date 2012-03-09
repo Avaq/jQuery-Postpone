@@ -107,6 +107,7 @@ Using <code>jQuery.Deferred.fn.fail()</code> you can add callbacks to when a def
 Postpone rejects a deferred when the timeout is canceled or it could not start.
 
 Clearing a timeout:
+
 ```javascript
 var timeout = $.after('1s').fail(function(error){
   console.log(error);
@@ -116,6 +117,7 @@ timeout.clear();
 ```
 
 Providing invalid arguments:
+
 ```javascript
 var timeout = $.after('Avaq').fail(function(error){
   console.log(error);
