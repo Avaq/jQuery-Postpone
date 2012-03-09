@@ -30,17 +30,8 @@ Returns a Deferred.promise() that calls the progress callbacks every [time] usin
 other arguments passed as arguments.
 
 ```javascript
-var i = 0;
-$.every(250).progress(function(){
-  if(i>9){
-    this.complete();
-    return;
-  }
-  console.log('Progress was made.');
-  i++;
-})
-.done(function(){
-  console.log('Completed.');
+$.every(250, 'Avaq').progress(function(name){
+  console.log(name+' has made progress.');
 });
 ```
 
@@ -123,6 +114,26 @@ var timeout = $.after('Avaq').fail(function(error){
   console.log(error);
 });
 //The console will log: "Could not recognise 'Avaq' as valid indication of time." or something in that fashion.
+```
+
+### Easy access
+
+Use the <code>this</code> keyword to reference the timeout(/promise) object from inside a callback funtion.
+This allows for the chaining of callbacks and triggers without ever having to put the object in a variable.
+
+```javascript
+var i = 0;
+$.every(250).progress(function(){
+  if(i>9){
+    this.complete();
+    return;
+  }
+  console.log('Progress was made.');
+  i++;
+})
+.done(function(){
+  console.log('Completed.');
+});
 ```
 
 ## Future plans
