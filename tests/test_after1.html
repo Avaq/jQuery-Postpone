@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery.postpone.js"></script>
+    
+    <script type="text/javascript" >
+      
+      function done(nr){
+        console.log('Timeout '+nr+' completed!');
+      }
+      
+      function fail(error){
+        console.log('FAILED: '+error);
+      }
+      
+      $(function(){
+        
+        //A timeout
+        $.after('1s', 1).fail(fail).done(done);
+        
+        //A canceled timeout
+        $.after('1s', 2).fail(fail).done(done).clear();
+        
+        //A prematurely completed timeout
+        $.after('1s', 3).fail(fail).done(done).complete();
+        
+        //A prematurely completed timeout which is then canceled
+        $.after('1s', 4).fail(fail).done(done).complete().clear();
+        
+        //A canceled timeout which is then prematurely completed
+        $.after('1s', 5).fail(fail).done(done).clear().complete();
+        
+      });
+
+    </script>
+    
+  </head>
+
+  <body>
+  </body>
+
+</html>

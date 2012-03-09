@@ -1,43 +1,1 @@
-<!DOCTYPE html>
-<html>
-  
-  <head>
-    
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="../lib/jquery.postpone.js"></script>
-    
-    <script type="text/javascript" >
-      
-      $(function(){
-        
-        var timeout1 = $.after('1s', 'hello', 'world').done(function(greet, thing){
-          console.log(greet+' '+thing+'!');
-        });
-        
-        var i = 0;
-        var timeout2 = $.every(250).progress(function(){
-          if(i>9){
-            this.complete();
-            return;
-          }
-          console.log('Progress was made.');
-          i++;
-        })
-        .done(function(){
-          console.log('Completed.');
-        });
-        
-        $.when(timeout1, timeout2).done(function(){
-          console.log('Everything done!');
-        });
-          
-      });
-
-    </script>
-    
-  </head>
-
-  <body>
-  </body>
-
-</html>
+<!DOCTYPE html><html>    <head>        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>    <script type="text/javascript" src="../lib/jquery.postpone.js"></script>        <script type="text/javascript" >            $(function(){                var timeout1 = $.after('1s', 'hello', 'world').done(function(greet, thing){          console.log(greet+' '+thing+'!');        });                var i = 0;        var timeout2 = $.every(250).progress(function(){          if(i>9){            this.complete();            return;          }          console.log('Progress was made.');          i++;        })        .done(function(){          console.log('Completed.');        });                $.when(timeout1, timeout2).done(function(){          console.log('Everything done!');        });                });    </script>      </head>  <body>  </body></html>
