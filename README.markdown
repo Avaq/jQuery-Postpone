@@ -57,7 +57,7 @@ interval.complete();
 
 ## In depth
 
-I will show you in some steps what you can make with this, and what the advantages
+Here are some examples of what you can make with this, and what the advantages
 of using <code>jQuery.Deferred</code> in combination with timeouts are.
 
 ### Use semantic time indication
@@ -170,7 +170,11 @@ days (d)
 
 ## Future plans
 
+-   
+-   Extend the list of Future plans with great ideas from me or the community.
+
 ## License
 
 Copyright (c) 2012 Avaq, https://github.com/Avaq
-The license is included as LICENSE in this directory.
+
+jQuery Postpone is licensed under the MIT license. The license is included as LICENSE in this directory.
