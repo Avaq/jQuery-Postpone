@@ -57,8 +57,8 @@ interval.complete();
 
 ## In depth
 
-Here are some examples of what you can make with this, and what the advantages
-of using <code>jQuery.Deferred</code> in combination with timeouts are.
+Here are some examples of what you can make with this, and the advantages
+of using <code>jQuery.Deferred</code> in combination with timeouts.
 
 ### Use semantic time indication
 
