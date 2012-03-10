@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery.postpone.js"></script>
+    
+    <script type="text/javascript" >
+      
+      function done(nr){
+        console.log('Timeout '+nr+' completed!');
+      }
+      
+      function fail(error){
+        console.log('FAILED: '+error);
+      }
+      
+      $(function(){
+        
+        //100 miliseconds
+        $.after(100, 1).done(done).fail(fail);
+        
+        //2004 miliseconds
+        $.after('2 seconds and 4 miliseconds', 2).done(done).fail(fail);
+        
+        //1408 miliseconds
+        $.after('1 second, 4 deciseconds and 8 miliseconds', 3).done(done).fail(fail);
+        
+      });
+
+    </script>
+    
+  </head>
+
+  <body>
+  </body>
+
+</html>

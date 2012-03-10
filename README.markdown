@@ -1,4 +1,4 @@
-# jQuery Postpone (version 1.0.0)
+# jQuery Postpone (version 1.0)
 
 jQuery Postpone is an API extension for <code>jQuery.Deferred</code> that allows
 you to use the deferred mechanism in combination with <code>setTimeout</code> and
@@ -59,6 +59,23 @@ interval.complete();
 
 I will show you in some steps what you can make with this, and what the advantages
 of using <code>jQuery.Deferred</code> in combination with timeouts are.
+
+### Use semantic time indication
+
+Both <code>$.after()</code> and <code>$.every()</code> accept an integer as first argument, or a string
+containing a time indication. The example below makes it pretty clear. If you want to know all the
+supported units, you can have a look at the supported unit list at the bottom of this README.
+
+```javascript
+//100 miliseconds
+$.after(100);
+
+//2004 miliseconds
+$.every('2 seconds and 4 miliseconds');
+
+//1408 miliseconds
+$.after('1 sec, 4 deciseconds and 8 ms');
+```
 
 ### Add multiple callbacks
 
@@ -136,7 +153,24 @@ $.every(250).progress(function(){
 });
 ```
 
+##Supported time units
+
+```
+miliseconds (ms) (default)
+centiseconds (cs)
+deciseconds (ds)
+seconds (sec) (s)
+decaseconds (das)
+hectaseconds (hs)
+kiloseconds (ks)
+minutes (min) (m)
+hours (h)
+days (d)
+```
+
 ## Future plans
 
--   Add a larger variety of mutipliers so arguments like <code>"10 minutes"</code> will
-be accepted.
+## License
+
+Copyright (c) 2012 Avaq, https://github.com/Avaq
+The license is included as LICENSE in this directory.
