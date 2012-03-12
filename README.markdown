@@ -1,4 +1,4 @@
-# jQuery Postpone (version 1.1)
+# jQuery Postpone (version 1.1.0 beta)
 
 jQuery Postpone is an API extension for <code>jQuery.Deferred</code> that allows
 you to use the deferred mechanism in combination with <code>setTimeout</code> and

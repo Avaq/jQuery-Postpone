@@ -14,24 +14,18 @@
         var i=0, j=0, t=4, broken = false;
         
         $.every(t).progress(function(){
-          console.log(i++);
-          if(broken){
-            this.clear();
+          if(i%200==0){
+            document.body.innerHTML += ('<p>i'+(i)+'|'+Date.now()+'</p>');
           }
-          if(i != j){}
+          i++;
         });
         
         $.recur(t).progress(function(){
-          console.log(j++);
-          if(broken){}
-          if(i != j){
-            alert('Out of sync!');
-            this.clear();
-            broken = true;
+          if(j%200==0){
+            document.body.innerHTML += ('<p>j'+(j)+'|'+Date.now()+'</p>');
           }
+          j++;
         });
-        
-        
         
       });
 
@@ -40,6 +34,7 @@
   </head>
 
   <body>
+    
   </body>
 
 </html>
