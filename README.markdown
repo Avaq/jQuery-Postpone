@@ -168,6 +168,14 @@ hours (h)
 days (d)
 ```
 
+##Tested in
+
+```
+Internet Explorer 9
+Chrome
+Firefox
+```
+
 ## Future plans
 
 -   
