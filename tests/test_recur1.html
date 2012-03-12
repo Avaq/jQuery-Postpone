@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery.postpone.js"></script>
+    
+    <script type="text/javascript" >
+      
+      $(function(){
+        
+        //Simple callback.
+        //$.recur('1sec').progress(function(){console.log('nyerk')});
+        
+        //Long-lasting callback.
+        //$.recur('2sec').progress(function(){alert('nyerk')});
+        
+        //Benchmark
+        var i=0, j=0, t=4, broken = false;
+        
+        $.every(t).progress(function(){
+          console.log(i++);
+          if(broken){
+            this.clear();
+          }
+          if(i != j){}
+        });
+        
+        $.recur(t).progress(function(){
+          console.log(j++);
+          if(broken){}
+          if(i != j){
+            alert('Out of sync!');
+            this.clear();
+            broken = true;
+          }
+        });
+        
+        
+        
+      });
+
+    </script>
+    
+  </head>
+
+  <body>
+  </body>
+
+</html>

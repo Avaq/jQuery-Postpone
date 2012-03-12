@@ -1,4 +1,4 @@
-# jQuery Postpone (version 1.0)
+# jQuery Postpone (version 1.1)
 
 jQuery Postpone is an API extension for <code>jQuery.Deferred</code> that allows
 you to use the deferred mechanism in combination with <code>setTimeout</code> and
@@ -8,7 +8,7 @@ you to use the deferred mechanism in combination with <code>setTimeout</code> an
 
 Wether you want a prettier way of writing timeouts in javascript, or
 advanced timing events; jQuery.postpone is something for you!
-It adds two methods to jQuery (<code>jQuery.after</code> and <code>jQuery.every</code>)
+It adds three methods to jQuery (`jQuery.after`, `jQuery.every` and `jQuery.recur`)
 which can be used to set a timeout with a deferred object handling its callbacks.
 
 ## Methods
@@ -34,6 +34,30 @@ $.every(250, 'Avaq').progress(function(name){
   console.log(name+' has made progress.');
 });
 ```
+
+This function uses `setInterval` internally. This means the precission of the timer is
+spot-on because setInterval executes every [time] regardless of what's going on in the
+thread (see [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1)).
+
+If you want the safety of callbacks not overlapping in the thread (and thus clogging
+script execution) use `$.recur` instead.
+
+### recur(time[, argument[, ...]])
+
+Does exactly the same as `$.every`, is slightly (very slightly) less precise when
+it comes to timing but it ensures that scipt execution does not clog up (see
+[issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1)).
+
+```javascript
+$.recur(250, 'Avaq').progress(function(name){
+  console.log(name+' has made progress.');
+});
+```
+
+When the callbacks take up less time than the interval time given, this method goes
+almost precisely in sync with `$.every`. When the callbacks take longer however,
+the next timeout will be postponed to until the script has finished executing. Therefore
+it does not clog up.
 
 ### clear()
 
@@ -153,7 +177,7 @@ $.every(250).progress(function(){
 });
 ```
 
-##Supported time units
+## Supported time units
 
 ```
 miliseconds (ms) (default)
@@ -168,13 +192,23 @@ hours (h)
 days (d)
 ```
 
-##Tested in
+## Tested in
 
 ```
 Internet Explorer 9
 Chrome
 Firefox
 ```
+
+## Changelog
+
+#### 1.1
+
+-   Added `$.recur` to resolve [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1).
+
+#### [1.0](https://github.com/Avaq/jQuery-Postpone/tree/0bd898674c75ad64ef288401a68eceb7e9c6ec0e)
+
+-   First stable release.
 
 ## Future plans
 
