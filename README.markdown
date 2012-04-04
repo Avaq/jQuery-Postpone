@@ -1,4 +1,4 @@
-# jQuery Postpone (version 1.1.0 stable)
+# jQuery Postpone (version 1.1.1 alpha)
 
 jQuery Postpone is an API extension for <code>jQuery.Deferred</code> that allows you to
 use the deferred mechanism in combination with <code>setTimeout</code> and
@@ -44,9 +44,8 @@ script execution) use `$.recur` instead.
 
 ### recur(time[, argument[, ...]])
 
-Does exactly the same as `$.every`, is slightly (very slightly) less precise when it comes
-to timing but it ensures that scipt execution does not clog up (see
-[issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1)).
+Does exactly the same as `$.every`, but it ensures that scipt execution does not clog up
+(see [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1)).
 
 ```javascript
 $.recur(250, 'Avaq').progress(function(name){
@@ -206,10 +205,10 @@ Firefox
 
 ## Changelog
 
-#### 1.1
+#### [1.1](https://github.com/Avaq/jQuery-Postpone/tree/8e97b376a859f0580aa9566394c6fa35e9592ad7)
 
 -   Added `$.recur` to resolve [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1).
--   Fixed [issue 2](https://github.com/Avaq/jQuery-Postpone/issues/2).
+-   Fixed [issue #2](https://github.com/Avaq/jQuery-Postpone/issues/2).
 
 #### [1.0](https://github.com/Avaq/jQuery-Postpone/tree/0bd898674c75ad64ef288401a68eceb7e9c6ec0e)
 
@@ -217,7 +216,18 @@ Firefox
 
 ## Future plans
 
--   
+-   Implement the following new timeout modify methods
+
+```javascript
+var timeout = $.after('2s');
+
+$.after(200).done(function(){
+  timeout.postpone(1000);
+  timeout.reset();
+  timeout.reduce(1000);
+});
+```
+
 -   Extend the list of Future plans with great ideas from me or the community.
 
 ## License
