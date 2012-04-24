@@ -1,15 +1,20 @@
 # jQuery Postpone (version 1.0)
 
-jQuery Postpone is an API extension for <code>jQuery.Deferred</code> that allows
-you to use the deferred mechanism in combination with <code>setTimeout</code> and
-<code>setInterval</code>.
+jQuery Postpone is an API extension for `jQuery.Deferred` that allows
+you to use the deferred mechanism in combination with `setTimeout` and
+`setInterval`.
 
 ## Introduction
 
 Wether you want a prettier way of writing timeouts in javascript, or
 advanced timing events; jQuery.postpone is something for you!
-It adds two methods to jQuery (<code>jQuery.after</code> and <code>jQuery.every</code>)
+It adds two methods to jQuery (`jQuery.after` and `jQuery.every`)
 which can be used to set a timeout with a deferred object handling its callbacks.
+
+## Download
+
+-   [latest.zip](https://github.com/Avaq/jQuery-Postpone/zipball/master)
+-   [latest-stable.zip](https://github.com/Avaq/jQuery-Postpone/zipball/v1.1.0) (recommended)
 
 ## Methods
 
@@ -58,11 +63,11 @@ interval.complete();
 ## In depth
 
 Here are some examples of what you can make with this, and the advantages
-of using <code>jQuery.Deferred</code> in combination with timeouts.
+of using `jQuery.Deferred` in combination with timeouts.
 
 ### Use semantic time indication
 
-Both <code>$.after()</code> and <code>$.every()</code> accept an integer as first argument, or a string
+Both `$.after()` and `$.every()` accept an integer as first argument, or a string
 containing a time indication. The example below makes it pretty clear. If you want to know all the
 supported units, you can have a look at the supported unit list at the bottom of this README.
 
@@ -111,7 +116,7 @@ $.when(timeout1, timeout2).done(function(){
 
 ### Add events to failures of the timeout
 
-Using <code>jQuery.Deferred.fn.fail()</code> you can add callbacks to when a deferred object is rejected.
+Using `jQuery.Deferred.fn.fail()` you can add callbacks to when a deferred object is rejected.
 Postpone rejects a deferred when the timeout is canceled or it could not start.
 
 Clearing a timeout:
@@ -135,7 +140,7 @@ var timeout = $.after('Avaq').fail(function(error){
 
 ### Easy access
 
-Use the <code>this</code> keyword to reference the timeout(/promise) object from inside a callback funtion.
+Use the `this` keyword to reference the timeout(/promise) object from inside a callback funtion.
 This allows for the chaining of callbacks and triggers without ever having to put the object in a variable.
 
 ```javascript
