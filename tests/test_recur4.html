@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery.postpone.js"></script>
+    
+    <script type="text/javascript" >
+      
+      $(function(){
+        
+        //Benchmark
+        
+        var t = 16, n = 1000;
+        
+        function every(){
+        
+          console.log('Benchmarking "every".');
+          
+          var i = 0, start, end;
+          
+          start = Date.now();
+          
+          $.every(t)
+          
+            .progress(function(){
+              i++;
+              if(i == n){
+                this.complete();
+              }
+            })
+            
+            .done(function(){
+              end = Date.now();
+              console.log('Every did '+n+' itterations in '+(Math.abs(end - start))+' miliseconds.');
+            })
+            
+            .done(recur);
+          
+        }
+        
+        function recur(){
+          
+          console.log('Benchmarking "recur".');
+          
+          var i = 0, start, end;
+          
+          start = Date.now();
+          
+          $.recur(t)
+          
+            .progress(function(){
+              i++;
+              if(i == n){
+                this.complete();
+              }
+            })
+            
+            .done(function(){
+              end = Date.now();
+              console.log('Recur did '+n+' itterations in '+(Math.abs(end - start))+' miliseconds.');
+            });
+          
+        }
+        
+        every();
+        
+      });
+
+    </script>
+    
+  </head>
+
+  <body>
+  </body>
+
+</html>

@@ -1,4 +1,4 @@
-# jQuery Postpone (version 1.0)
+# jQuery Postpone (version 1.1.1 alpha)
 
 jQuery Postpone is an API extension for `jQuery.Deferred` that allows
 you to use the deferred mechanism in combination with `setTimeout` and
@@ -6,10 +6,10 @@ you to use the deferred mechanism in combination with `setTimeout` and
 
 ## Introduction
 
-Wether you want a prettier way of writing timeouts in javascript, or
-advanced timing events; jQuery.postpone is something for you!
-It adds two methods to jQuery (`jQuery.after` and `jQuery.every`)
-which can be used to set a timeout with a deferred object handling its callbacks.
+Wether you want a prettier way of writing timeouts in javascript, or advanced timing
+events; jQuery.postpone is something for you! It adds three methods to jQuery
+(`jQuery.after`, `jQuery.every` and `jQuery.recur`) which can be used to set a timeout
+with a deferred object handling its callbacks.
 
 ## Download
 
@@ -39,6 +39,29 @@ $.every(250, 'Avaq').progress(function(name){
   console.log(name+' has made progress.');
 });
 ```
+
+This function uses `setInterval` internally. This means the precission of the timer is
+spot-on because setInterval executes every [time] regardless of what's going on in the
+thread (see [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1)).
+
+If you want the safety of callbacks not overlapping in the thread (and thus clogging
+script execution) use `$.recur` instead.
+
+### recur(time[, argument[, ...]])
+
+Does exactly the same as `$.every`, but it ensures that scipt execution does not clog up
+(see [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1)).
+
+```javascript
+$.recur(250, 'Avaq').progress(function(name){
+  console.log(name+' has made progress.');
+});
+```
+
+When the callbacks take up less time than the interval time given, this method goes
+almost precisely in sync with `$.every`. When the callbacks take longer however,
+the next timeout will be postponed to until the script has finished executing. Therefore
+it does not clog up.
 
 ### clear()
 
@@ -84,8 +107,8 @@ $.after('1 sec, 4 deciseconds and 8 ms');
 
 ### Add multiple callbacks
 
-You can (continuously) add callbacks to one single timeout. And even when the timeout
-has already well.. timed out, the callbacks will still well.. get called.
+You can (continuously) add callbacks to one single timeout. And even when the timeout has
+already well.. timed out, the callbacks will still well.. get called.
 
 ```javascript
 var timeout = $.after('1s');
@@ -104,7 +127,8 @@ $(function(){
 
 ### Combine multiple timeouts
 
-jQuery offers its own functions for this, we just enable the use of them by using Deferreds.
+jQuery offers its own functions for this, we just enable the use of them by using
+Deferreds.
 
 ```javascript
 var timeout1 = $.after('1s');
@@ -158,7 +182,7 @@ $.every(250).progress(function(){
 });
 ```
 
-##Supported time units
+## Supported time units
 
 ```
 miliseconds (ms) (default)
@@ -173,13 +197,44 @@ hours (h)
 days (d)
 ```
 
+## Tested in
+
+```
+Internet Explorer 9
+Chrome
+Firefox
+```
+
+## Changelog
+
+#### [1.1](https://github.com/Avaq/jQuery-Postpone/tree/8e97b376a859f0580aa9566394c6fa35e9592ad7)
+
+-   Added `$.recur` to resolve [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1).
+-   Fixed [issue #2](https://github.com/Avaq/jQuery-Postpone/issues/2).
+
+#### [1.0](https://github.com/Avaq/jQuery-Postpone/tree/0bd898674c75ad64ef288401a68eceb7e9c6ec0e)
+
+-   First stable release.
+
 ## Future plans
 
--   
+-   Implement the following new timeout modify methods
+
+```javascript
+var timeout = $.after('2s');
+
+$.after(200).done(function(){
+  timeout.postpone(1000);
+  timeout.reset();
+  timeout.reduce(1000);
+});
+```
+
 -   Extend the list of Future plans with great ideas from me or the community.
 
 ## License
 
 Copyright (c) 2012 Avaq, https://github.com/Avaq
 
-jQuery Postpone is licensed under the MIT license. The license is included as LICENSE in this directory.
+jQuery Postpone is licensed under the MIT license. The license is included as LICENSE in
+this directory.
