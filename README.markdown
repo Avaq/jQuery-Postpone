@@ -15,6 +15,7 @@ with a deferred object handling its callbacks.
 
 -   [latest.zip](https://github.com/Avaq/jQuery-Postpone/zipball/master)
 -   [latest-stable.zip](https://github.com/Avaq/jQuery-Postpone/zipball/v1.1.0) (recommended)
+-   [all available downloads](https://github.com/Avaq/jQuery-Postpone/tags)
 
 ## Methods
 
