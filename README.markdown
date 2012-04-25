@@ -225,9 +225,11 @@ Firefox
 var timeout = $.after('2s');
 
 $.after(200).done(function(){
-  timeout.postpone(1000);
   timeout.reset();
-  timeout.reduce(1000);
+  timeout.postpone(1000);
+  timeout.advance(1000);
+  timeout.pause();
+  timeout.play();
 });
 
 $.every('1 minute').times(5);
