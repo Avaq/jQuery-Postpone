@@ -228,6 +228,8 @@ $.after(200).done(function(){
   timeout.reset();
   timeout.reduce(1000);
 });
+
+$.every('1 minute').times(5);
 ```
 
 -   Extend the list of Future plans with great ideas from me or the community.
