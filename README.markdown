@@ -1,4 +1,4 @@
-# jQuery Postpone (version 1.1.1 alpha)
+# jQuery Postpone (version 1.1.1 beta)
 
 jQuery Postpone is an API extension for `jQuery.Deferred` that allows
 you to use the deferred mechanism in combination with `setTimeout` and
@@ -16,9 +16,9 @@ with a deferred object handling its callbacks.
 -   [latest.zip](https://github.com/Avaq/jQuery-Postpone/zipball/master)
 -   [latest-stable.zip](https://github.com/Avaq/jQuery-Postpone/zipball/v1.1.0) (recommended)
 
-## Methods
+## jQuery methods
 
-### after(time[, argument[, ...]])
+### jQuery.after(time[, argument[, ...]])
 
 Returns a Deferred.promise() that automatically resolves after [time] using any other
 arguments passed as arguments.
@@ -29,7 +29,7 @@ $.after('2s', 'world').done(function(thing){
 });
 ```
 
-### every(time[, argument[, ...]])
+### jQuery.every(time[, argument[, ...]])
 
 Returns a Deferred.promise() that calls the progress callbacks every [time] using any
 other arguments passed as arguments.
@@ -47,7 +47,7 @@ thread (see [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1)).
 If you want the safety of callbacks not overlapping in the thread (and thus clogging
 script execution) use `$.recur` instead.
 
-### recur(time[, argument[, ...]])
+### jQuery.recur(time[, argument[, ...]])
 
 Does exactly the same as `$.every`, but it ensures that scipt execution does not clog up
 (see [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1)).
@@ -63,7 +63,9 @@ almost precisely in sync with `$.every`. When the callbacks take longer however,
 the next timeout will be postponed to until the script has finished executing. Therefore
 it does not clog up.
 
-### clear()
+## Timeout object methods
+
+### timeout.clear()
 
 This method clears the timeout and rejects the deferred.
 
@@ -73,7 +75,7 @@ timeout.clear();
 //The timeout has been prevented from ever calling any done() callbacks and any fail() callbacks are called.
 ```
 
-### complete()
+### timeout.complete()
 
 This method clears the timeout and resolves the deferred.
 
@@ -81,6 +83,17 @@ This method clears the timeout and resolves the deferred.
 var interval = $.every(250);
 interval.complete();
 //The interval has stopped and any .done() callbacks will be fired.
+```
+
+### timeout.times(n)
+
+This method allows the every() or recur() to autoresolve itself after n progress callbacks.
+
+```javascript
+var interval = $.every(250);
+interval.times(5);
+//The interval will run 5 times, calling progress-callbacks. And right after the last callback it will
+//resolve and call the done-callbacks.
 ```
 
 ## In depth
@@ -228,8 +241,6 @@ $.after(200).done(function(){
   timeout.reset();
   timeout.reduce(1000);
 });
-
-$.every('1 minute').times(5);
 ```
 
 -   Extend the list of Future plans with great ideas from me or the community.
