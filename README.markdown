@@ -15,6 +15,7 @@ with a deferred object handling its callbacks.
 
 -   [latest.zip](https://github.com/Avaq/jQuery-Postpone/zipball/master)
 -   [latest-stable.zip](https://github.com/Avaq/jQuery-Postpone/zipball/v1.1.0) (recommended)
+-   [all available downloads](https://github.com/Avaq/jQuery-Postpone/tags)
 
 ## jQuery methods
 
@@ -237,9 +238,11 @@ Firefox
 var timeout = $.after('2s');
 
 $.after(200).done(function(){
-  timeout.postpone(1000);
   timeout.reset();
-  timeout.reduce(1000);
+  timeout.postpone(1000);
+  timeout.advance(1000);
+  timeout.pause();
+  timeout.play();
 });
 ```
 
