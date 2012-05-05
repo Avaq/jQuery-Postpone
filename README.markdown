@@ -1,4 +1,4 @@
-# jQuery Postpone (version 1.1.1 beta)
+# jQuery Postpone (version 1.1.1)
 
 jQuery Postpone is an API extension for `jQuery.Deferred` that allows
 you to use the deferred mechanism in combination with `setTimeout` and
@@ -91,10 +91,17 @@ interval.complete();
 This method allows the every() or recur() to autoresolve itself after n progress callbacks.
 
 ```javascript
-var interval = $.every(250);
-interval.times(5);
-//The interval will run 5 times, calling progress-callbacks. And right after the last callback it will
-//resolve and call the done-callbacks.
+var interval = $.every(250).times(5)
+
+interval.progress(function(){
+  console.log(this.i);
+});
+
+interval.done(function(){
+  console.log('And we\'re off!');
+});
+
+//This will log: "1, 2, 3, 4, 5, And we're off!", with 250 miliseconds in between every logged number.
 ```
 
 ## In depth
@@ -174,26 +181,6 @@ var timeout = $.after('Avaq').fail(function(error){
   console.log(error);
 });
 //The console will log: "Could not recognise 'Avaq' as valid indication of time." or something in that fashion.
-```
-
-### Easy access
-
-Use the `this` keyword to reference the timeout(/promise) object from inside a callback funtion.
-This allows for the chaining of callbacks and triggers without ever having to put the object in a variable.
-
-```javascript
-var i = 0;
-$.every(250).progress(function(){
-  if(i>9){
-    this.complete();
-    return;
-  }
-  console.log('Progress was made.');
-  i++;
-})
-.done(function(){
-  console.log('Completed.');
-});
 ```
 
 ## Supported time units
