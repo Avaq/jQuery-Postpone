@@ -73,7 +73,7 @@ This method clears the timeout and rejects the deferred.
 ```javascript
 var timeout = $.after('1s');
 timeout.clear();
-//The timeout has been prevented from ever calling any done() callbacks and any fail() callbacks are called.
+//The timeout stops and any .fail() callbacks will get called.
 ```
 
 ### timeout.complete()
@@ -83,7 +83,7 @@ This method clears the timeout and resolves the deferred.
 ```javascript
 var interval = $.every(250);
 interval.complete();
-//The interval has stopped and any .done() callbacks will be fired.
+//The interval has stopped and any .done() callbacks will get called.
 ```
 
 ### timeout.times(n)
@@ -91,7 +91,7 @@ interval.complete();
 This method allows the every() or recur() to autoresolve itself after n progress callbacks.
 
 ```javascript
-var interval = $.every(250).times(5)
+var interval = $.every(250).times(5);
 
 interval.progress(function(){
   console.log(this.i);
