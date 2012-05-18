@@ -208,6 +208,10 @@ Firefox
 
 ## Changelog
 
+##### [1.1.1]
+
+-   Added the `timeout.times()`-method.
+
 #### [1.1](https://github.com/Avaq/jQuery-Postpone/tree/8e97b376a859f0580aa9566394c6fa35e9592ad7)
 
 -   Added `$.recur` to resolve [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1).
@@ -219,20 +223,12 @@ Firefox
 
 ## Future plans
 
--   Implement the following new timeout modify methods
-
-```javascript
-var timeout = $.after('2s');
-
-$.after(200).done(function(){
-  timeout.reset();
-  timeout.postpone(1000);
-  timeout.advance(1000);
-  timeout.pause();
-  timeout.play();
-});
-```
-
+-   Implement a `timeout.reset()`-method that will restart the timeout.
+-   Implement a `timeout.postpone()`-method that will increase the time it takes before the timeout completes.
+-   Implement a `timeout.advance()`-method that will decrease the time it takes before the timeout completes.
+-   Implement a `timeout.pause()`-method that will prevent the timeout from completing.
+-   Implement a `timeout.stop()`-method that sets the timeout back to its original delay and pauses it.
+-   Implement a `timeout.play()`-method that will unpause a timeout, allowing it to complete. Possible aliases: unpause, fire or go.
 -   Extend the list of Future plans with great ideas from me or the community.
 
 ## License
