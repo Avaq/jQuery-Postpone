@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery.postpone.js"></script>
+    
+    <script type="text/javascript" >
+      
+      var timeout = $.after('3 sec').done(function(){
+        console.log('timeout done');
+      });
+      
+      timeout.pause();
+      
+      var interval = $.every('3 s').progress(function(){
+        console.log('progress: ' + this.i);
+      });
+      
+      interval.pause();
+
+    </script>
+    
+  </head>
+
+  <body>
+  </body>
+
+</html>

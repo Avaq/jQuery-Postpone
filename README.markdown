@@ -1,4 +1,4 @@
-# jQuery Postpone (version 1.1.1)
+# jQuery Postpone (version 1.2)
 
 jQuery Postpone is an API extension for `jQuery.Deferred` that allows
 you to use the deferred mechanism in combination with `setTimeout` and
@@ -13,9 +13,11 @@ with a deferred object handling its callbacks.
 
 ## Download
 
--   [latest.zip](https://github.com/Avaq/jQuery-Postpone/zipball/master)
--   [latest-stable.zip](https://github.com/Avaq/jQuery-Postpone/zipball/v1.1.0) (recommended)
--   [all available downloads](https://github.com/Avaq/jQuery-Postpone/tags)
+ - [latest-stable.zip](https://github.com/Avaq/jQuery-Postpone/zipball/v1.1.0) (recommended)
+ - [latest.zip](https://github.com/Avaq/jQuery-Postpone/zipball/master)
+ - [latest-development-build.zip](https://github.com/Avaq/jQuery-Postpone/zipball/working)
+
+See all [available downloads](https://github.com/Avaq/jQuery-Postpone/tags).
 
 ## jQuery methods
 
@@ -24,7 +26,7 @@ with a deferred object handling its callbacks.
 Returns a Deferred.promise() that automatically resolves after [time] using any other
 arguments passed as arguments.
 
-```javascript
+```js
 $.after('2s', 'world').done(function(thing){
   console.log('Hello '+thing+'!');
 });
@@ -35,7 +37,7 @@ $.after('2s', 'world').done(function(thing){
 Returns a Deferred.promise() that calls the progress callbacks every [time] using any
 other arguments passed as arguments.
 
-```javascript
+```js
 $.every(250, 'Avaq').progress(function(name){
   console.log(name+' has made progress.');
 });
@@ -53,7 +55,7 @@ script execution) use `$.recur` instead.
 Does exactly the same as `$.every`, but it ensures that scipt execution does not clog up
 (see [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1)).
 
-```javascript
+```js
 $.recur(250, 'Avaq').progress(function(name){
   console.log(name+' has made progress.');
 });
@@ -70,7 +72,7 @@ it does not clog up.
 
 This method clears the timeout and rejects the deferred.
 
-```javascript
+```js
 var timeout = $.after('1s');
 timeout.clear();
 //The timeout stops and any .fail() callbacks will get called.
@@ -80,7 +82,7 @@ timeout.clear();
 
 This method clears the timeout and resolves the deferred.
 
-```javascript
+```js
 var interval = $.every(250);
 interval.complete();
 //The interval has stopped and any .done() callbacks will get called.
@@ -90,7 +92,7 @@ interval.complete();
 
 This method allows the every() or recur() to autoresolve itself after n progress callbacks.
 
-```javascript
+```js
 var interval = $.every(250).times(5);
 
 interval.progress(function(){
@@ -104,6 +106,40 @@ interval.done(function(){
 //This will log: "1, 2, 3, 4, 5, And we're off!", with 250 miliseconds in between every logged number.
 ```
 
+### timeout.reset()
+
+This method resets the timeout to where it started.
+
+```js
+var timeout = $.after('10 sec');
+
+var interval = $.every('5 sec').progress(function(){
+  timeout.reset();
+});
+
+//The timeout will NEVER complete!
+```
+
+### timeout.pause(), timeout.stop() and timeout.play()
+
+These functions more-or-less speak for themselves. Pause halts the timeout until play is
+called, and stop halts the timeout and resets it.
+
+### timeout.postpone(time) and timeout.advance(time)
+
+Timeout.postpone adds time to the expiry of the timeout. Advance takes away from that time.
+
+```js
+//Wait two seconds.
+var timeout = $.after('2 sec');
+
+//Actually, wait one second.
+timeout.advance('1 second');
+
+//Actually, no, three seconds.
+timeout.postpone('2 seconds');
+```
+
 ## In depth
 
 Here are some examples of what you can make with this, and the advantages
@@ -115,7 +151,7 @@ Both `$.after()` and `$.every()` accept an integer as first argument, or a strin
 containing a time indication. The example below makes it pretty clear. If you want to know all the
 supported units, you can have a look at the supported unit list at the bottom of this README.
 
-```javascript
+```js
 //100 miliseconds
 $.after(100);
 
@@ -131,7 +167,7 @@ $.after('1 sec, 4 deciseconds and 8 ms');
 You can (continuously) add callbacks to one single timeout. And even when the timeout has
 already well.. timed out, the callbacks will still well.. get called.
 
-```javascript
+```js
 var timeout = $.after('1s');
 
 timeout.done(function(){
@@ -151,7 +187,7 @@ $(function(){
 jQuery offers its own functions for this, we just enable the use of them by using
 Deferreds.
 
-```javascript
+```js
 var timeout1 = $.after('1s');
 var timeout2 = $.after(20);
 $.when(timeout1, timeout2).done(function(){
@@ -166,7 +202,7 @@ Postpone rejects a deferred when the timeout is canceled or it could not start.
 
 Clearing a timeout:
 
-```javascript
+```js
 var timeout = $.after('1s').fail(function(error){
   console.log(error);
 });
@@ -176,7 +212,7 @@ timeout.clear();
 
 Providing invalid arguments:
 
-```javascript
+```js
 var timeout = $.after('Avaq').fail(function(error){
   console.log(error);
 });
@@ -186,7 +222,7 @@ var timeout = $.after('Avaq').fail(function(error){
 ## Supported time units
 
 ```
-miliseconds (ms) (default)
+milliseconds (ms) (default)
 centiseconds (cs)
 deciseconds (ds)
 seconds (sec) (s)
@@ -208,29 +244,35 @@ Firefox
 
 ## Changelog
 
-##### [1.1.1]
+#### 1.2
 
--   Added the `timeout.times()`-method.
+ - Added the `timeout.reset()`-method.
+ - Added the `timeout.postpone()`-method.
+ - Added the `timeout.advance()`-method.
+ - Added the `timeout.pause()`-method.
+ - Added the `timeout.play()`-method.
+ - Added the `timeout.stop()`-method.
+ - Added the `timeout.isPaused()`-method.
+ - Added the `timeout.timeRemaining()`-method.
+ - Fixed some typos.
+ - Fixed a memory leak caused by `$.every(n).times(i)`.
+ 
+#### [1.1.1](https://github.com/Avaq/jQuery-Postpone/tree/08ae9bd5e0d6ad3448cee795d6ef7b1cce2048b2)
+
+ - Added the `timeout.times()`-method.
 
 #### [1.1](https://github.com/Avaq/jQuery-Postpone/tree/8e97b376a859f0580aa9566394c6fa35e9592ad7)
 
--   Added `$.recur` to resolve [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1).
--   Fixed [issue #2](https://github.com/Avaq/jQuery-Postpone/issues/2).
+ - Added `$.recur` to resolve [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1).
+ - Fixed [issue #2](https://github.com/Avaq/jQuery-Postpone/issues/2).
 
 #### [1.0](https://github.com/Avaq/jQuery-Postpone/tree/0bd898674c75ad64ef288401a68eceb7e9c6ec0e)
 
--   First stable release.
+ - First stable release.
 
 ## Future plans
 
--   Implement a `timeout.trigger()`-method that will progress an `every` or `recur`.
--   Implement a `timeout.reset()`-method that will restart the timeout.
--   Implement a `timeout.postpone()`-method that will increase the time it takes before the timeout completes.
--   Implement a `timeout.advance()`-method that will decrease the time it takes before the timeout completes.
--   Implement a `timeout.pause()`-method that will prevent the timeout from completing.
--   Implement a `timeout.stop()`-method that sets the timeout back to its original delay and pauses it.
--   Implement a `timeout.play()`-method that will unpause a timeout, allowing it to complete. Possible aliases: unpause, fire or go.
--   Extend the list of Future plans with great ideas from me or the community.
+ - Extend the list of Future plans with great ideas from me or the community.
 
 ## License
 
