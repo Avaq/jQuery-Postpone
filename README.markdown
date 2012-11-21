@@ -6,10 +6,21 @@ you to use the deferred mechanism in combination with `setTimeout` and
 
 ## Introduction
 
-Wether you want a prettier way of writing timeouts in javascript, or advanced timing
+Whether you want a prettier way of writing timeouts in JavaScript, or advanced timing
 events; jQuery.postpone is something for you! It adds three methods to jQuery
 (`jQuery.after`, `jQuery.every` and `jQuery.recur`) which can be used to set a timeout
 with a deferred object handling its callbacks.
+
+## Why?!
+
+This is part of my personal project to turn every asynchronous task in JavaScript into a
+jQuery.Deferred. It would make my, and your life as a JavaScript programmer that much easier.
+
+ - [jQuery.DOMTimers](https://github.com/Avaq/jQuery-DOMTimers) - Deferred for DOM timing events.
+ - [jQuery.Postpone](https://github.com/Avaq/jQuery-Postpone) - Deferred for setTimeout and setInterval.
+ 
+See the [in depth](https://github.com/Avaq/jQuery-Postpone#in-depth) section of this
+README to find out why setTimeout and Deferred work well together.
 
 ## Download
 
@@ -103,7 +114,7 @@ interval.done(function(){
   console.log('And we\'re off!');
 });
 
-//This will log: "1, 2, 3, 4, 5, And we're off!", with 250 miliseconds in between every logged number.
+//This will log: "1, 2, 3, 4, 5, And we're off!", with 250 milliseconds in between every logged number.
 ```
 
 ### timeout.reset()
@@ -152,13 +163,13 @@ containing a time indication. The example below makes it pretty clear. If you wa
 supported units, you can have a look at the supported unit list at the bottom of this README.
 
 ```js
-//100 miliseconds
+//100 milliseconds
 $.after(100);
 
-//2004 miliseconds
-$.every('2 seconds and 4 miliseconds');
+//2004 milliseconds
+$.every('2 seconds and 4 milliseconds');
 
-//1408 miliseconds
+//1408 milliseconds
 $.after('1 sec, 4 deciseconds and 8 ms');
 ```
 
