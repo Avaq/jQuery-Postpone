@@ -223,6 +223,7 @@ Firefox
 
 ## Future plans
 
+-   Implement a `timeout.trigger()`-method that will progress an `every` or `recur`.
 -   Implement a `timeout.reset()`-method that will restart the timeout.
 -   Implement a `timeout.postpone()`-method that will increase the time it takes before the timeout completes.
 -   Implement a `timeout.advance()`-method that will decrease the time it takes before the timeout completes.
