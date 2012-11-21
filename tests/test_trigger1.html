@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery.postpone.js"></script>
+    
+    <script type="text/javascript" >
+      
+      $(function(){
+        
+        var t = $.every('3 sec').progress(function(){
+          alert('hi');
+        });
+        
+        t.trigger();
+        t.trigger();
+        
+      });
+
+    </script>
+    
+  </head>
+
+  <body>
+  </body>
+
+</html>
