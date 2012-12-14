@@ -1,0 +1,32 @@
+{
+  "name": "postpone",
+  "version": "v1.2",
+  "title": "jQuery.Postpone",
+  "author": {
+    "name": "Aldwin Vlasblom",
+    "url": "https://github.com/Avaq"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/Avaq/jQuery-Postpone/master/LICENSE"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.8"
+  },
+  "description": "jQuery Postpone is an API extension for jQuery.Deferred that allows you to use the deferred mechanism in combination with setTimeout and setInterval.",
+  "keywords": [
+    "setTimeout",
+    "setInterval",
+    "timeout",
+    "interval",
+    "delay",
+    "postpone",
+    "wait",
+    "deferred"
+  ],
+  "homepage": "https://github.com/Avaq/jQuery-Postpone",
+  "docs": "https://github.com/Avaq/jQuery-Postpone/blob/master/README.markdown",
+  "download": "https://github.com/Avaq/jQuery-Postpone/zipball/v1.2"
+}
