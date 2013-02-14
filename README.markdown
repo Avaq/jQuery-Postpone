@@ -1,4 +1,4 @@
-# jQuery Postpone (version 1.2)
+# jQuery Postpone (version 1.2.0)
 
 jQuery Postpone is an API extension for `jQuery.Deferred` that allows
 you to use the deferred mechanism in combination with `setTimeout` and
@@ -24,7 +24,7 @@ README to find out why setTimeout and Deferred work well together.
 
 ## Download
 
- - [latest-stable.zip](https://github.com/Avaq/jQuery-Postpone/zipball/v1.2) (recommended)
+ - [latest-stable.zip](https://github.com/Avaq/jQuery-Postpone/zipball/v1.2.0) (recommended)
  - [latest.zip](https://github.com/Avaq/jQuery-Postpone/zipball/master)
  - [latest-development-build.zip](https://github.com/Avaq/jQuery-Postpone/zipball/working)
 
@@ -255,7 +255,7 @@ Firefox
 
 ## Changelog
 
-#### 1.2
+#### [1.2.0](https://github.com/Avaq/jQuery-Postpone/tree/v1.2.0)
 
  - Added the `timeout.reset()`-method.
  - Added the `timeout.postpone()`-method.
@@ -272,12 +272,12 @@ Firefox
 
  - Added the `timeout.times()`-method.
 
-#### [1.1](https://github.com/Avaq/jQuery-Postpone/tree/8e97b376a859f0580aa9566394c6fa35e9592ad7)
+#### [1.1.0](https://github.com/Avaq/jQuery-Postpone/tree/8e97b376a859f0580aa9566394c6fa35e9592ad7)
 
  - Added `$.recur` to resolve [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1).
  - Fixed [issue #2](https://github.com/Avaq/jQuery-Postpone/issues/2).
 
-#### [1.0](https://github.com/Avaq/jQuery-Postpone/tree/0bd898674c75ad64ef288401a68eceb7e9c6ec0e)
+#### [1.0.0](https://github.com/Avaq/jQuery-Postpone/tree/0bd898674c75ad64ef288401a68eceb7e9c6ec0e)
 
  - First stable release.
 
