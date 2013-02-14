@@ -255,7 +255,7 @@ Firefox
 
 ## Changelog
 
-#### 1.2
+#### [1.2.0](https://github.com/Avaq/jQuery-Postpone/tree/v1.2.0)
 
  - Added the `timeout.reset()`-method.
  - Added the `timeout.postpone()`-method.
@@ -272,12 +272,12 @@ Firefox
 
  - Added the `timeout.times()`-method.
 
-#### [1.1](https://github.com/Avaq/jQuery-Postpone/tree/8e97b376a859f0580aa9566394c6fa35e9592ad7)
+#### [1.1.0](https://github.com/Avaq/jQuery-Postpone/tree/8e97b376a859f0580aa9566394c6fa35e9592ad7)
 
  - Added `$.recur` to resolve [issue #1](https://github.com/Avaq/jQuery-Postpone/issues/1).
  - Fixed [issue #2](https://github.com/Avaq/jQuery-Postpone/issues/2).
 
-#### [1.0](https://github.com/Avaq/jQuery-Postpone/tree/0bd898674c75ad64ef288401a68eceb7e9c6ec0e)
+#### [1.0.0](https://github.com/Avaq/jQuery-Postpone/tree/0bd898674c75ad64ef288401a68eceb7e9c6ec0e)
 
  - First stable release.
 
