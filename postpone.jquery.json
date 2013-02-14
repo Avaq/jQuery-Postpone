@@ -1,6 +1,6 @@
 {
   "name": "postpone",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "title": "jQuery.Postpone",
   "author": {
     "name": "Aldwin Vlasblom",
@@ -26,8 +26,8 @@
     "wait",
     "deferred"
   ],
-  "bugs": "https://github.com/Avaq/jQuery-Postpone/issues",
   "homepage": "https://github.com/Avaq/jQuery-Postpone",
-  "docs": "https://github.com/Avaq/jQuery-Postpone/blob/master/README.markdown",
-  "download": "https://github.com/Avaq/jQuery-Postpone/zipball/v1.2.0"
+  "docs": "https://github.com/Avaq/jQuery-Postpone/blob/master/README.md",
+  "bugs": "https://github.com/Avaq/jQuery-Postpone/issues",
+  "download": "https://github.com/Avaq/jQuery-Postpone/zipball/v1.2.1"
 }
