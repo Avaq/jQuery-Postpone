@@ -1,4 +1,4 @@
-# jQuery Postpone (version 1.2)
+# jQuery Postpone (version 1.2.0)
 
 jQuery Postpone is an API extension for `jQuery.Deferred` that allows
 you to use the deferred mechanism in combination with `setTimeout` and
@@ -24,7 +24,7 @@ README to find out why setTimeout and Deferred work well together.
 
 ## Download
 
- - [latest-stable.zip](https://github.com/Avaq/jQuery-Postpone/zipball/v1.2) (recommended)
+ - [latest-stable.zip](https://github.com/Avaq/jQuery-Postpone/zipball/v1.2.0) (recommended)
  - [latest.zip](https://github.com/Avaq/jQuery-Postpone/zipball/master)
  - [latest-development-build.zip](https://github.com/Avaq/jQuery-Postpone/zipball/working)
 
