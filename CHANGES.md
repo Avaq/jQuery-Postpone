@@ -1,3 +1,9 @@
+#### [1.2.2](https://github.com/Avaq/jQuery-Postpone/tree/v1.2.2)
+
+ - Fixed mistakes in the README.
+ - Renamed "lib" to "src".
+ - Improved some information in the manifest file.
+
 #### [1.2.1](https://github.com/Avaq/jQuery-Postpone/tree/v1.2.1)
 
  - Fixed errors in the jQuery manifest, allowing the plug-in to be registered on their website.
